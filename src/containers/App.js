@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
-// import LoginForm from '../components/LoginForm';
+// navbar should be lowercase in path
+import Navbar from '../components/navbar';
+// uncomment the following import
+import LoginForm from '../components/LoginForm';
 import Footer from '../components/Footer';
 import { Glyphicon } from 'react-bootstrap';
 import '../styles/App.css';
@@ -17,8 +19,10 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogin() {
-    this.refs.navbutton.handleLogoutButton();
+  // change to arrow function to bind this
+  handleLogin = () => {
+    // not necessary
+    // this.refs.navbutton.handleLogoutButton();
     this.setState({ 
       showLoginForm: false,
       showCheckmark: true
@@ -26,7 +30,8 @@ class App extends Component {
   }
 
   handleLogout() {
-    this.refs.navbutton.handleLogoutButton();
+    // not necessary
+    // this.refs.navbutton.handleLogoutButton();
     this.setState({
       showLoginForm: true,
       showCheckmark: false
@@ -36,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <Navbar ref='navbutton' handleLogout={this.handleLogout} />
+        <Navbar ref='navbutton' handleLogout={this.handleLogout} showLoginForm={this.state.showLoginForm}/>
         <div className={this.state.showLoginForm === true ? '' : 'hide'}>
           <LoginForm handleLogin={this.handleLogin} />
         </div>

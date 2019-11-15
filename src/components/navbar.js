@@ -6,7 +6,10 @@ class Navbar extends Component {
     constructor(props) {
     super(props);
 
-    this = { showLogoutButton: false };
+    // should be this.state
+    this.state = { 
+      showLogoutButton: false
+    };
   }
 
   handleLogoutButton() {
@@ -17,9 +20,9 @@ class Navbar extends Component {
 
   render() {
     let sessionButton;
-    if (this.state.showLogoutButton === true) {
-      sessionButton = (<button className='flat-button border-gray' onClick={this.props.handleLogout}>Sign Out</button>);
-    }
+    // pulls in this.props.showLoginForm for show logout button logic. Many ways to handle this same logic...
+      sessionButton = (!this.props.showLoginForm ? <button className='flat-button border-gray' onClick={this.props.handleLogout}>Sign Out</button> : null);
+    
     return (
       <div className='app-navbar'>
         <div className='flex-container'>

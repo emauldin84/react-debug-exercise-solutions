@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 
-class Footer extend Component {
+// should be extends
+class Footer extends Component {
   render() {
     return (
       <div>
